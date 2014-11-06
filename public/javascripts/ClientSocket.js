@@ -7,6 +7,11 @@
  	// initialize socket.io
   	var socket = io();
 
+  	socket.emit('userConnection','Im connected');
+  	socket.on('userConnection', function(message){
+  		console.log(message);
+  	});	
+
 	/*********************************************************************
 		 *					RECEIVING EVENTS & HANDLING THEM
 		 *********************************************************************/

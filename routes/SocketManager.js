@@ -14,11 +14,15 @@ module.exports.init = function(httpServer){
 	 *	Open socket
 	 */
 	io.sockets.on('connection', function(socket){
-		console.log("New User");
 
 		socket.on('disconnect', function(){
 			console.log("User Disconnected");
 			// socket.broadcast.emit('disconnected', socket.id);
+		});
+
+		socket.on('userConnection', function(message){
+			console.log(message);
+			io.sockets.emit('userConnection','From Server: '+message);
 		});
 
 	});
