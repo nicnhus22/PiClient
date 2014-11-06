@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var socketManager = require('./routes/SocketManager');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -65,5 +66,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// at the end of the file
+socketManager.init(server);
 
 module.exports = app;
